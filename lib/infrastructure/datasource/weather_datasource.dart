@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:geolocator/geolocator.dart';
 
 class WeatherDataSource {
   final Dio dio;
 
   WeatherDataSource({required this.dio});
 
-  Future<Map<String, dynamic>?> getWeather() async {
+  Future<Map<String, dynamic>?> getWeather(Position pos) async {
     String url =
-        "https://api.openweathermap.org/data/2.5/weather?q=delhi&appid=a2b5eaf8400477d096f81ffa7883f3d1";
+        "https://api.openweathermap.org/data/2.5/weather?lat=${pos.latitude}&lon=${pos.longitude}&appid=a2b5eaf8400477d096f81ffa7883f3d1";
     final res = await dio.get(url);
 
     if (res.statusCode == 200) {

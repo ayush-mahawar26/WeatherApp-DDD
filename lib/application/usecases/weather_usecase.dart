@@ -1,3 +1,4 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:weather_ddd/domain/repositories/weather_repo.dart';
 
 class WeatherUseCase {
@@ -5,8 +6,8 @@ class WeatherUseCase {
 
   WeatherUseCase({required this.weatherRepo});
 
-  Future<Map<String, dynamic>?> getWeather() async {
-    return await weatherRepo.getWeather();
+  Future<Map<String, dynamic>?> getWeather(Position pos) async {
+    return await weatherRepo.getWeather(pos);
   }
 
   Future<Map<String, dynamic>?> getWeatherByCity(String city) async {

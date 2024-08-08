@@ -1,3 +1,4 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:weather_ddd/domain/repositories/weather_repo.dart';
 import 'package:weather_ddd/infrastructure/datasource/weather_datasource.dart';
 
@@ -7,8 +8,8 @@ class WeatherRepositoryImplementation extends WeatherRepo {
   WeatherRepositoryImplementation({required this.weatherDataSource});
 
   @override
-  Future<Map<String, dynamic>?> getWeather() async {
-    return await weatherDataSource.getWeather();
+  Future<Map<String, dynamic>?> getWeather(Position pos) async {
+    return await weatherDataSource.getWeather(pos);
   }
 
   @override
